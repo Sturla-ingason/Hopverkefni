@@ -11,7 +11,7 @@ public class StrengirApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(StrengirApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 388, 453);
         stage.setTitle("Hallooo");
         stage.setScene(scene);
         stage.show();
