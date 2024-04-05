@@ -11,4 +11,6 @@ public class StrengirController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
+
 }
