@@ -44,10 +44,14 @@ public class StrengirController implements Initializable {
             listi.getItems().add("Vantar Texta");
         }
         else{
-            String[] texti = this.texti.split(" ");
+            String text = texti.toUpperCase();
+            String ord = Ord.toUpperCase();
+
+            String[] texti = text.split(" |\\. |\\, ");
+            listi.getItems().clear();
 
             for (int i = 0; i < texti.length ; i++ ) {
-                if (texti[i].equals(this.Ord)){
+                if (texti[i].equals(ord)){
                     listi.getItems().add(i + 1);
                 }
             }
