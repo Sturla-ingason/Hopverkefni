@@ -1,15 +1,67 @@
 package com.example.hopverkefni;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 public class StrengirController {
+
+    public TextArea adaltexti;
+    public Button Leita;
+    public TextArea Leitarord;
+    public ListView listi;
+    public Label TeljaOrdLabel;
+    public Button TeljaOrd;
+
+    private String texti;
+    private String Ord;
+
     @FXML
     private Label welcomeText;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    /**
+     * Leitar að leitarorði í texta og skilar inn í list view
+     *
+     */
+    public void ordiTexta(){
+        if (Ord.isEmpty()){  // athughar hvort við séum með leitarorð
+            listi.getItems().add("Vantar leitarord");
+        }
+        else if (texti.isEmpty()) { //Athugar hvort það sé texti til að leita í
+            listi.getItems().add("Vantar Texta");
+        }
+        else{
+            String[] texti = this.texti.split(" ");
+
+            for (int i = 0; i < texti.length ; i++ ) {
+                if (texti[i].equals(this.Ord)){
+                    listi.getItems().add(i + 1);
+                }
+            }
+        }
+    }
+
+    /**
+     * Telur hversu mörg orð eru í textanum
+     */
+    public void teljaOrd(){
+        if (this.texti.isEmpty()){
+
+        }
+        else{
+            String[] texti = this.texti.split(" ");
+            TeljaOrdLabel.setText(Integer.toString(texti.length));
+        }
+    }
+
+    public void setTexti(){
+        this.texti = adaltexti.getText();
+    }
+
+    public void setOrd(){
+        this.Ord = Leitarord.getText();
     }
 
 
