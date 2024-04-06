@@ -1,6 +1,5 @@
 package com.example.hopverkefni;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -23,38 +23,49 @@ public class StrengirController implements Initializable {
     public ListView listi;
     public Label TeljaOrdLabel;
     public Button TeljaOrd;
+    public TextArea skiptiOrd;
 
     public FileChooser fileChooser = new FileChooser();
 
     private String texti;
     private String Ord;
-
-    @FXML
-    private Label welcomeText;
+    private String OrdSkipta;
 
     /**
      * Leitar að leitarorði í texta og skilar inn í list view
      *
      */
     public void ordiTexta(){
-        if (Ord.isEmpty()){  // athughar hvort við séum með leitarorð
-            listi.getItems().add("Vantar leitarord");
-        }
-        else if (texti.isEmpty()) { //Athugar hvort það sé texti til að leita í
-            listi.getItems().add("Vantar Texta");
-        }
-        else{
+        if (!Ord.isEmpty() && !texti.isEmpty()){
+            // Setur textan og leitar orð sem hástafi svo það sé hægt að finna öll
+            // tilvik af leitarorði í textanum sama hvort það sé upprunalega með
+            // stórum eða littlum staf í byrjun
             String text = texti.toUpperCase();
             String ord = Ord.toUpperCase();
 
             String[] texti = text.split(" |\\. |\\, |\\: |\\; ");
             listi.getItems().clear();
 
+            // Fer í gegnum textan og ef orðið í textanum er eins og leitarorðið
+            // setur hann það í listview sem hann skilar.
             for (int i = 0; i < texti.length ; i++ ) {
                 if (texti[i].equals(ord)){
                     listi.getItems().add(i + 1);
                 }
             }
+        }
+
+        else{
+            System.out.println("error");
+        }
+    }
+
+    /**
+     *
+     */
+    public void skiptaUtOrdi(){
+        if(!Ord.isEmpty() && !texti.isEmpty() && !OrdSkipta.isEmpty()){
+
         }
     }
 
@@ -71,15 +82,40 @@ public class StrengirController implements Initializable {
         }
     }
 
-    public void setTexti(){
-        this.texti = adaltexti.getText();
+    /**
+     * Leifir okkur að sjá file explorer/finder til að velja txt file.
+     */
+    public void saveText(){
+        File file = fileChooser.showSaveDialog(new Stage());
+        if(file != null){
+            saveSystem(file, adaltexti.getText());
+        }
     }
 
-    public void setOrd(){
-        this.Ord = Leitarord.getText();
+    /**
+     * Sér um að vista textan sem notandi hefur skrifað í txt skrá
+     * @param file skjalið sem við ættlum að vista textan í
+     * @param content textin sem við ættlum að vista
+     */
+    public void saveSystem(File file, String content) {
+        try {
+            PrintWriter printwriter = new PrintWriter(file);
+            printwriter.write(content);
+            printwriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void getText() throws FileNotFoundException {
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fileChooser.setInitialDirectory(new File("/Users/sturlaingason/Documents"));
+    }
+
+    /**
+     *
+     */
+    public void getText(){
         File file = fileChooser.showOpenDialog(new Stage());
 
         try{
@@ -93,12 +129,15 @@ public class StrengirController implements Initializable {
         }
     }
 
-    public void saveText(){
-        File file = fileChooser.showSaveDialog(new Stage());
+    public void setTexti(){
+        this.texti = adaltexti.getText();
     }
 
+    public void setOrd(){
+        this.Ord = Leitarord.getText();
+    }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileChooser.setInitialDirectory(new File("/Users/sturlaingason/Documents"));
+    public void setOrdSkipta(){
+        this.OrdSkipta = skiptiOrd.getText();
     }
 }

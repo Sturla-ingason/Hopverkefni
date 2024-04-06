@@ -51,12 +51,12 @@
       </HBox>
       <HBox prefHeight="67.0" prefWidth="388.0">
          <children>
-            <TextArea prefHeight="88.0" prefWidth="179.0" promptText="Skipta út leitarorði">
+            <TextArea fx:id="skiptiOrd" onKeyTyped="#setOrdSkipta" prefHeight="88.0" prefWidth="179.0" promptText="Skipta út leitarorði">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </HBox.margin>
             </TextArea>
-            <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Skipta út orði">
+            <Button mnemonicParsing="false" onAction="#skiptaUtOrdi" prefHeight="63.0" prefWidth="171.0" text="Skipta út orði">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </HBox.margin>
