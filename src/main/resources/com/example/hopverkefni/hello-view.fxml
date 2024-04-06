@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hopverkefni.StrengirController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hopverkefni.StrengirController">
    <children>
       <HBox prefHeight="90.0" prefWidth="388.0">
          <children>
@@ -49,13 +49,32 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="225.0" prefWidth="388.0">
+      <HBox prefHeight="67.0" prefWidth="388.0">
          <children>
-            <TextArea fx:id="adaltexti" onKeyTyped="#setTexti" prefHeight="215.0" prefWidth="371.0">
+            <TextArea prefHeight="88.0" prefWidth="179.0" promptText="Skipta út leitarorði">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" />
                </HBox.margin>
             </TextArea>
+            <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Skipta út orði">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="225.0" prefWidth="388.0">
+         <children>
+            <TextArea fx:id="adaltexti" onKeyTyped="#setTexti" prefHeight="215.0" prefWidth="290.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </HBox.margin>
+            </TextArea>
+            <Button mnemonicParsing="false" onAction="#saveText" prefHeight="215.0" prefWidth="58.0" text="Vista">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
       <HBox prefHeight="69.0" prefWidth="388.0">

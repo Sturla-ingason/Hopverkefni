@@ -47,7 +47,7 @@ public class StrengirController implements Initializable {
             String text = texti.toUpperCase();
             String ord = Ord.toUpperCase();
 
-            String[] texti = text.split(" |\\. |\\, ");
+            String[] texti = text.split(" |\\. |\\, |\\: |\\; ");
             listi.getItems().clear();
 
             for (int i = 0; i < texti.length ; i++ ) {
@@ -91,6 +91,10 @@ public class StrengirController implements Initializable {
         } catch (FileNotFoundException e){
             e.printStackTrace();
         }
+    }
+
+    public void saveText(){
+        File file = fileChooser.showSaveDialog(new Stage());
     }
 
 
