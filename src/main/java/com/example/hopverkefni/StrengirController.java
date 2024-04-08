@@ -1,11 +1,10 @@
 package com.example.hopverkefni;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -34,24 +33,21 @@ public class StrengirController implements Initializable {
 
     /**
      * Leitar að leitarorði í texta og skilar inn í list view
-     *
      */
-    public void ordiTexta(){
-        if (Ord.isEmpty()){  // athughar hvort við séum með leitarorð
+    public void ordiTexta() {
+        if (Ord.isEmpty()) {  // athughar hvort við séum með leitarorð
             listi.getItems().add("Vantar leitarord");
-        }
-        else if (texti.isEmpty()) { //Athugar hvort það sé texti til að leita í
+        } else if (texti.isEmpty()) { //Athugar hvort það sé texti til að leita í
             listi.getItems().add("Vantar Texta");
-        }
-        else{
+        } else {
             String text = texti.toUpperCase();
             String ord = Ord.toUpperCase();
 
             String[] texti = text.split(" |\\. |\\, ");
             listi.getItems().clear();
 
-            for (int i = 0; i < texti.length ; i++ ) {
-                if (texti[i].equals(ord)){
+            for (int i = 0; i < texti.length; i++) {
+                if (texti[i].equals(ord)) {
                     listi.getItems().add(i + 1);
                 }
             }
@@ -61,34 +57,33 @@ public class StrengirController implements Initializable {
     /**
      * Telur hversu mörg orð eru í textanum
      */
-    public void teljaOrd(){
-        if (this.texti.isEmpty()){
+    public void teljaOrd() {
+        if (this.texti.isEmpty()) {
 
-        }
-        else{
+        } else {
             String[] texti = this.texti.split(" ");
             TeljaOrdLabel.setText(Integer.toString(texti.length));
         }
     }
 
-    public void setTexti(){
+    public void setTexti() {
         this.texti = adaltexti.getText();
     }
 
-    public void setOrd(){
+    public void setOrd() {
         this.Ord = Leitarord.getText();
     }
 
     public void getText() throws FileNotFoundException {
         File file = fileChooser.showOpenDialog(new Stage());
 
-        try{
+        try {
             Scanner scanner = new Scanner(file);
-            while(scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 adaltexti.appendText(scanner.nextLine() + "\n");
             }
             this.texti = adaltexti.getText();
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -96,5 +91,19 @@ public class StrengirController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("/Users/sturlaingason/Documents"));
+    }
+
+    @FXML
+    private VBox vvv;
+
+    @FXML
+    private MenuButton backgroundMenu;
+
+    @FXML
+    protected void changeBackgroundColor(ActionEvent event) {
+        MenuItem menuItem = (MenuItem) event.getSource();
+        String selectedColor = menuItem.getText().toLowerCase();
+        vvv.getStyleClass().clear();
+        vvv.getStyleClass().add(selectedColor);
     }
 }
