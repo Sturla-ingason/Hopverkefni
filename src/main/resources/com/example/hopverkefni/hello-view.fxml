@@ -3,77 +3,85 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0"
-      prefWidth="388.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.hopverkefni.StrengirController">
-    <children>
-        <HBox prefHeight="90.0" prefWidth="388.0">
-            <children>
-                <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="71.0" prefWidth="187.0" text="Þema">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Blár"/>
-                        <MenuItem mnemonicParsing="false" text="Bleikur"/>
-                        <MenuItem mnemonicParsing="false" text="Rauður"/>
-                        <MenuItem mnemonicParsing="false" text="Grænn"/>
-                        <MenuItem mnemonicParsing="false" text="Appelsínugulur"/>
-                        <MenuItem mnemonicParsing="false" text="1"/>
-                    </items>
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </HBox.margin>
-                </MenuButton>
-                <Button mnemonicParsing="false" onAction="#getText" prefHeight="70.0" prefWidth="182.0" text="Load txt">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
-        <HBox prefHeight="68.0" prefWidth="388.0">
-            <children>
-                <TextArea fx:id="Leitarord" onKeyTyped="#setOrd" prefHeight="64.0" prefWidth="180.0"
-                          promptText="Leitarorð">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </TextArea>
-                <ListView fx:id="listi" prefHeight="58.0" prefWidth="95.0">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </ListView>
-                <Button fx:id="Leita" mnemonicParsing="false" onAction="#ordiTexta" prefHeight="58.0" prefWidth="60.0"
-                        text="Leita">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
-        <HBox prefHeight="225.0" prefWidth="388.0">
-            <children>
-                <TextArea fx:id="adaltexti" onKeyTyped="#setTexti" prefHeight="215.0" prefWidth="371.0">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </TextArea>
-            </children>
-        </HBox>
-        <HBox prefHeight="69.0" prefWidth="388.0">
-            <children>
-                <Label fx:id="TeljaOrdLabel" alignment="CENTER" prefHeight="59.0" prefWidth="291.0" text="0">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </Label>
-                <Button fx:id="TeljaOrd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                        onAction="#teljaOrd" prefHeight="59.0" prefWidth="59.0" style="-fx-wrap-text: True;"
-                        text="Telja orð" textAlignment="CENTER">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
-    </children>
-</VBox>
+<StackPane fx:id="rootPane" styleClass="parentContainer" fx:controller="com.example.hopverkefni.StrengirController"
+           xmlns="http://javafx.com/javafx/16"
+           xmlns:fx="http://javafx.com/fxml/1" stylesheets="@styles.css">
+    <VBox fx:id="vvv" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="453.0"
+          prefWidth="388.0">
+        <children>
+            <HBox prefHeight="90.0" prefWidth="388.0">
+                <children>
+                    <MenuButton fx:id="backgroundMenu" alignment="CENTER" mnemonicParsing="false" prefHeight="71.0"
+                                prefWidth="187.0"
+                                text="Þema">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="bleikur"/>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="blar"/>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="raudur"/>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="graenn"/>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="appelsinugulur"/>
+                            <MenuItem mnemonicParsing="false" onAction="#changeBackgroundColor" text="kettir"/>
+                        </items>
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </HBox.margin>
+                    </MenuButton>
+                    <Button mnemonicParsing="false" onAction="#getText" prefHeight="70.0" prefWidth="182.0"
+                            text="Load txt">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+            <HBox prefHeight="68.0" prefWidth="388.0">
+                <children>
+                    <TextArea fx:id="Leitarord" onKeyTyped="#setOrd" prefHeight="64.0" prefWidth="180.0"
+                              promptText="Leitarorð">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </TextArea>
+                    <ListView fx:id="listi" prefHeight="58.0" prefWidth="95.0">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </ListView>
+                    <Button fx:id="Leita" mnemonicParsing="false" onAction="#ordiTexta" prefHeight="58.0"
+                            prefWidth="60.0"
+                            text="Leita">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+            <HBox prefHeight="225.0" prefWidth="388.0">
+                <children>
+                    <TextArea fx:id="adaltexti" onKeyTyped="#setTexti" prefHeight="215.0" prefWidth="371.0">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </TextArea>
+                </children>
+            </HBox>
+            <HBox prefHeight="69.0" prefWidth="388.0">
+                <children>
+                    <Label fx:id="TeljaOrdLabel" alignment="CENTER" prefHeight="59.0" prefWidth="291.0" text="0">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </Label>
+                    <Button fx:id="TeljaOrd" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                            onAction="#teljaOrd" prefHeight="59.0" prefWidth="59.0" style="-fx-wrap-text: True;"
+                            text="Telja orð" textAlignment="CENTER">
+                        <HBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0"/>
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+</StackPane>

@@ -1,0 +1,24 @@
+.blar {
+    -fx-background-color: #ADD8E6;
+}
+
+.graenn {
+    -fx-background-color: #90EE90;
+}
+
+.raudur {
+    -fx-background-color: red;
+}
+
+.bleikur {
+    -fx-background-color: #FFB6C1;
+}
+
+.appelsinugulur {
+    -fx-background-color: #FF5733;
+}
+
+.kettir {
+    -fx-background-image: url('cats.jpg');
+    -fx-background-size: cover;
+}
