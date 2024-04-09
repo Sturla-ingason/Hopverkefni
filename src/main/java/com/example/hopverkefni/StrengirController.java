@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -30,6 +31,12 @@ public class StrengirController implements Initializable {
 
     @FXML
     private Label welcomeText;
+
+    @FXML
+    private VBox vvv;
+
+    @FXML
+    private MenuButton backgroundMenu;
 
     /**
      * Leitar að leitarorði í texta og skilar inn í list view
@@ -88,16 +95,27 @@ public class StrengirController implements Initializable {
         }
     }
 
+    public void save(){
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null){
+            saveContent(file, adaltexti.getText());
+        }
+    }
+
+    public void saveContent(File file, String content){
+        try {
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.write(content);
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileChooser.setInitialDirectory(new File("/Users/sturlaingason/Documents"));
     }
-
-    @FXML
-    private VBox vvv;
-
-    @FXML
-    private MenuButton backgroundMenu;
 
     @FXML
     protected void changeBackgroundColor(ActionEvent event) {
