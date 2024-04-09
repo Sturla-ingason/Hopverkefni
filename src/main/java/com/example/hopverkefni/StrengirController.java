@@ -95,14 +95,14 @@ public class StrengirController implements Initializable {
         }
     }
 
-    public void save(){
+    public void save() {
         File file = fileChooser.showSaveDialog(new Stage());
-        if (file != null){
+        if (file != null) {
             saveContent(file, adaltexti.getText());
         }
     }
 
-    public void saveContent(File file, String content){
+    public void saveContent(File file, String content) {
         try {
             PrintWriter printWriter = new PrintWriter(file);
             printWriter.write(content);

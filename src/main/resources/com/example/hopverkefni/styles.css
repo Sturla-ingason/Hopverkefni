@@ -22,3 +22,7 @@
     -fx-background-image: url('cats.jpg');
     -fx-background-size: cover;
 }
+
+.remove {
+    -fx-background-image: transparent;
+}
