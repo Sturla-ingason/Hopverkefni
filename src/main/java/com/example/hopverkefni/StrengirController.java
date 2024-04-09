@@ -114,7 +114,7 @@ public class StrengirController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileChooser.setInitialDirectory(new File("/Users/sturlaingason/Documents"));
+        fileChooser.setInitialDirectory(null);
     }
 
     @FXML
