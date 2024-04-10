@@ -53,11 +53,16 @@ public class StrengirController implements Initializable {
             String[] texti = text.split(" |\\. |\\, ");
             listi.getItems().clear();
 
+            int sum = 0;
+
             for (int i = 0; i < texti.length; i++) {
                 if (texti[i].equals(ord)) {
                     listi.getItems().add(i + 1);
+                    sum +=1;
                 }
             }
+
+            listi.getItems().add(0, (ord + " í texta : " + sum));
         }
     }
 
